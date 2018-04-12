@@ -1,0 +1,16 @@
+{
+  "name": "mageants/module-Shippingtracker",
+  "description": "Customer can check the current shipping status of an order",
+  "type": "magento2-module",
+    "version": "101.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Mageants\\Shippingtracker\\": ""
+        }
+    }
+}

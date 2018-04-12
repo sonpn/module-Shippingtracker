@@ -1,0 +1,69 @@
+<?php
+/**
+  * @category   Mageants Shippingtracker
+  * @package    Mageants_Shippingtracker
+  * @copyright  Copyright (c) 2017 Mageants
+  * @author     Mageants Team <support@Mageants.com>
+  */
+?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURl =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                    ->getStore()
+                    ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)."tracking_loading/loading.gif";
+
+?>
+<div class="shiptracking-content">
+  <div class="block-content" aria-labelledby="block-customer-login-heading">
+  <img src="<?php echo $mediaURl ?>" class="tracking-loader" alt="tracking-loader" title="tracking-loader"/> 
+	<div class="block-title">Check Shipping Status</div>
+       <form data-mage-init='{"validation": {}}' action="javascript:void(0)" method="post" autocomplete="off" id="shipping-tracking" class="scaffold-form form">
+        <fieldset class="fieldset login" data-hasrequired="* Required Fields">
+        <div class="fieldset">
+            <div class="field text required">
+                <label class="label" for="orderid"><span>Order Number</span></label>
+                  <div class="control">
+                      <input name="orderid"  autocomplete="off" id="orderid" class="input-text" title="Order Number" data-validate="{required:true}" aria-required="true" type="text">
+                  </div>
+              </div>
+
+             <div class="field email required">
+                  <label class="label" for="email"><span>Email</span></label>
+                  <div class="control">
+                      <input name="email"  autocomplete="off" id="email" class="input-text" title="Email" data-validate="{required:true, 'validate-email':true}" aria-required="true" type="email">
+                    </div>
+              </div>        
+        </div>
+        <div class="actions-toolbar">
+              <div class="primary"><button type="submit" class="action primary" name="submit" id="submit"><span>Track Order</span></button></div>
+        </div>
+
+        </fieldset>
+    </form>
+    <div class="no-tracking-details" style="display: none;"><?php echo __('Tracking details isn\'t availaible'); ?></div>
+    <div class="order_tracking_details" style="display: none;">
+    <div id="oderinfo" class="order-info-message"> 
+	
+	<div class="block-title"><?php echo __('Tracking Information') ?></div>
+    
+    <p><?php echo __('Your Order Status is :') ?> <strong class="status"></strong></p>
+    <p><?php echo __('Order Id :') ?><span class="order-id"></span></p>
+
+    <p>Click <a target="_blank" id="order_tracking" href="#"><strong> here</strong></a> to view your Order Detail.</p>
+
+            <div class="shipping-info" style="display: none;">
+                <p><?php echo __('You can'); ?> <a target="_blank" href="#" id="linkId" title="<?php echo __('Track Order') ?>"><?php /* @escapeNotVerified */ echo __('Track Your Order here.') ?></a> </p>
+             </div>   
+             </div>
+            <?php //else: ?>
+            <p class="no-shipping-detail" style="display: none;"><?php echo __('Shipping Tracking not available.'); ?></p>
+        
+     <br />
+    </div>
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+  require(["shippingtracker"], function($) {
+  });
+</script>

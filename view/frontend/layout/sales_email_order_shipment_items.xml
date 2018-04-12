@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Email Shipment Items List" design_abstraction="custom">
+    <body>
+        <referenceBlock name="items">
+            <action method="setTemplate" ifconfig="shippingtracker_section/shippingtracker_general/shippingtracker_email">
+                <argument name="template" xsi:type="string">Mageants_Shippingtracker::email/items.phtml</argument>
+            </action>
+         </referenceBlock>
+    </body>
+</page>
